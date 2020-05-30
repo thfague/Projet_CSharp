@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 using Model.Entities;
 using System.Linq;
+using System.Collections;
 
 namespace UnitTest
 {
@@ -72,7 +73,8 @@ namespace UnitTest
         {
             contexte.Classes.Add(new Classe { NomEtablissement = "Etablissement 1", Niveau = "Seconde" });
             contexte.SaveChanges();
-            Assert.IsTrue(contexte.Classes.Count() == 1);
+            Assert.IsTrue(contexte.Classes.ToList().Last().NomEtablissement == "Etablissement 1");
+            Assert.IsTrue(contexte.Classes.ToList().Last().Niveau == "Seconde");
         }
 
         /// <summary>
@@ -81,6 +83,13 @@ namespace UnitTest
         [TestMethod]
         public void TestAddEleve()
         {
+            Classe classe = new Classe { NomEtablissement = "Etablissement 1", Niveau = "Seconde" };
+            contexte.Classes.Add(classe);
+            contexte.SaveChanges();
+            contexte.Eleves.Add(new Eleve { Nom = "DUPONT", Prenom = "Jean", DateNaissance = DateTime.Now, ClasseId = classe.ClasseId });
+            contexte.SaveChanges();
+            Assert.IsTrue(contexte.Eleves.ToList().Last().Nom == "DUPONT");
+            Assert.IsTrue(contexte.Eleves.ToList().Last().Prenom == "Jean");
         }
     }
 }
