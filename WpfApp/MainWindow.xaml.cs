@@ -16,5 +16,20 @@ namespace WpfApp
             InitializeComponent();
             this.DataContext = new HomeViewModel();
         }
+
+        private void ListeEleve_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListeEleve_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ListeEleve_Loaded_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -40,9 +40,9 @@ namespace BusinessLayer.Queries
         }
 
         /// <summary>
-        /// Récupérer une note par l'ID de l'élève
+        /// Récupérer les notes par l'ID de l'élève
         /// </summary>
-        /// <param name="eleveID">Identifiant de l'élève qui concerne la note à récupérer</param>
+        /// <param name="eleveID">Identifiant de l'élève qui concerne les notes à récupérer</param>
         /// <returns>IQueryable de Note</returns>
         public IQueryable<Note> GetByEleveID(int eleveID)
         {

@@ -26,7 +26,7 @@ namespace BusinessLayer.Queries
         /// <returns>IQueryable de Eleve</returns>
         public IQueryable<Eleve> GetAll()
         {
-            return _contexte.Eleves;
+            return _contexte.Eleves.OrderBy(e => e.Nom);
         }
 
         /// <summary>

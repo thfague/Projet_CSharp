@@ -15,7 +15,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Background="Blue">
-            <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="White">Mon Application</Label>
+            <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="White">Élèves</Label>
         </DockPanel>
         <my:ListeEleve Grid.Row="1" DataContext="{Binding ListeEleveViewModel}"></my:ListeEleve>
     </Grid>

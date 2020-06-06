@@ -16,7 +16,6 @@ namespace WpfApp.ViewModel
 
         private ObservableCollection<DetailEleveViewModel> _eleves = null;
         private DetailEleveViewModel _selectedEleve;
-        private BusinessManager businessManager = BusinessManager.Instance;
 
         #endregion
 
@@ -28,13 +27,15 @@ namespace WpfApp.ViewModel
         public ListeEleveViewModel()
         {
             _eleves = new ObservableCollection<DetailEleveViewModel>();
-            foreach (Eleve e in businessManager.GetAllEleve())
+            foreach (Eleve e in BusinessManager.Instance.GetAllEleve())
             {
                 _eleves.Add(new DetailEleveViewModel(e));
             }
 
             if (_eleves != null && _eleves.Count > 0)
+            {
                 _selectedEleve = _eleves.ElementAt(0);
+            }
         }
 
         #endregion

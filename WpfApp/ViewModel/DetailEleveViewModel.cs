@@ -1,5 +1,7 @@
-﻿using Model.Entities;
+﻿using BusinessLayer;
+using Model.Entities;
 using System;
+using System.Linq;
 using WpfApp.ViewModel.Common;
 
 namespace WpfApp.ViewModel
@@ -15,6 +17,8 @@ namespace WpfApp.ViewModel
         private string _nom;
         private string _prenom;
         private DateTime _dateNaissance;
+        private string _moyenne;
+        private string _nbAbsences;
 
         #endregion
 
@@ -29,6 +33,8 @@ namespace WpfApp.ViewModel
             _nom = e.Nom;
             _prenom = e.Prenom;
             _dateNaissance = e.DateNaissance;
+            _moyenne = BusinessManager.Instance.GetAvgByEleveId(e.EleveId);
+            _nbAbsences = BusinessManager.Instance.GetNbAbsencesByEleveId(e.EleveId);
         }
 
         #endregion
@@ -60,6 +66,24 @@ namespace WpfApp.ViewModel
         {
             get { return _dateNaissance; }
             set { _dateNaissance = value; }
+        }
+
+        /// <summary>
+        /// Moyenne de l'élève
+        /// </summary>
+        public string Moyenne
+        {
+            get { return _moyenne; }
+            set { _moyenne = value; }
+        }
+
+        /// <summary>
+        /// Nombre d'absences de l'élève
+        /// </summary>
+        public string NbAbsences
+        {
+            get { return _nbAbsences; }
+            set { _nbAbsences = value; }
         }
 
         #endregion

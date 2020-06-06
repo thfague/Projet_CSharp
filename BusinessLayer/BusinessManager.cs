@@ -174,13 +174,13 @@ namespace BusinessLayer
         }
 
         /// <summary>
-        /// Récupérer une note en base par l'ID de l'élève
+        /// Récupérer les notes en base par l'ID de l'élève
         /// </summary>
-        /// <returns>Note</returns>
-        public Note GetNoteByEleveId(int eleveID)
+        /// <returns>List<Notes></Notes></returns>
+        public List<Note> GetNotesByEleveId(int eleveID)
         {
             NoteQuery nq = new NoteQuery(contexte);
-            return nq.GetByEleveID(eleveID).SingleOrDefault();
+            return nq.GetByEleveID(eleveID).ToList();
         }
 
         /// <summary>
@@ -216,6 +216,23 @@ namespace BusinessLayer
             nc.Supprimer(noteID);
         }
 
+        /// <summary>
+        /// Récupérer la moyenne des notes en base par l'ID de l'élève
+        /// </summary>
+        /// <param name="eleveID">Identifiant de l'élève</param>
+        /// <returns>string</returns>
+        public string GetAvgByEleveId(int eleveID)
+        {
+            NoteQuery nq = new NoteQuery(contexte);
+            List<Note> notes = nq.GetByEleveID(eleveID).ToList();
+            if(notes.Count == 0)
+            {
+                return "Aucunes notes.";
+            }
+            double moy = notes.Average(note => note.Valeur);
+            return moy.ToString();
+        }
+
         #endregion
 
         #region Absence
@@ -241,13 +258,13 @@ namespace BusinessLayer
         }
 
         /// <summary>
-        /// Récupérer une absence en base par l'ID de l'élève
+        /// Récupérer les absences en base par l'ID de l'élève
         /// </summary>
-        /// <returns>Absence</returns>
-        public Absence GetAbsenceByEleveId(int eleveID)
+        /// <returns>List<Absence></Absence></returns>
+        public List<Absence> GetAbsencesByEleveId(int eleveID)
         {
             AbsenceQuery aq = new AbsenceQuery(contexte);
-            return aq.GetByEleveID(eleveID).SingleOrDefault();
+            return aq.GetByEleveID(eleveID).ToList();
         }
 
         /// <summary>
@@ -281,6 +298,22 @@ namespace BusinessLayer
         {
             AbsenceCommand ac = new AbsenceCommand(contexte);
             ac.Supprimer(absenceID);
+        }
+
+        /// <summary>
+        /// Récupérer le nombre d'absences d'un élève par son ID
+        /// </summary>
+        /// <param name="eleveID">Identifiant de l'élève</param>
+        /// <returns>string</returns>
+        public string GetNbAbsencesByEleveId(int eleveID)
+        {
+            AbsenceQuery aq = new AbsenceQuery(contexte);
+            int nbAbsences = aq.GetByEleveID(eleveID).Count();
+            if (nbAbsences == 0)
+            {
+                return "Aucunes absences.";
+            }
+            return nbAbsences.ToString();
         }
 
         #endregion

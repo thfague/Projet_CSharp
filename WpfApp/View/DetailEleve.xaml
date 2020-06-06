@@ -28,6 +28,10 @@
             <TextBox Text="{Binding Prenom}"></TextBox>
             <Label>Date de naissance</Label>
             <TextBox Text="{Binding DateNaissance}"></TextBox>
+            <Label>Moyenne</Label>
+            <TextBox Text="{Binding Moyenne}"></TextBox>
+            <Label>Absences</Label>
+            <TextBox Text="{Binding NbAbsences}"></TextBox>
         </StackPanel>
     </Grid>
 </UserControl>

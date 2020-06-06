@@ -40,9 +40,9 @@ namespace BusinessLayer.Queries
         }
 
         /// <summary>
-        /// Récupérer une absence par l'ID de l'élève
+        /// Récupérer les absences par l'ID de l'élève
         /// </summary>
-        /// <param name="eleveID">Identifiant de l'élève qui concerne l'absence à récupérer</param>
+        /// <param name="eleveID">Identifiant de l'élève qui concerne les absences à récupérer</param>
         /// <returns>IQueryable de Absence</returns>
         public IQueryable<Absence> GetByEleveID(int eleveID)
         {

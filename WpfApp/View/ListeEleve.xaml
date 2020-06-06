@@ -7,26 +7,20 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="300px"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0"  Grid.Row="0" Grid.RowSpan="3" Margin="5px" ItemsSource="{Binding Eleves, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEleve, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+        <ListView Grid.Column="0" ItemsSource="{Binding Eleves, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedEleve, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="100px" Header="Nom" DisplayMemberBinding="{Binding Nom}" />
+                    <GridViewColumn Width="150px" Header="Nom" DisplayMemberBinding="{Binding Nom}" />
                     <GridViewColumn Width="150px" Header="Prenom" DisplayMemberBinding="{Binding Prenom}" />
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <my:DetailEleve DataContext="{Binding SelectedEleve, UpdateSourceTrigger=PropertyChanged}"></my:DetailEleve>
+        <my:DetailEleve DataContext="{Binding SelectedEleve, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="800px"></my:DetailEleve>
     </Grid>
 </UserControl>
