@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Projet .NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-md bg-secondary">
+        <div class="container-fluid">
+            @Html.ActionLink("Projet .NET", "Index", "Home", new { @class = "navbar-brand" })
+            <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"
+                 id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li role="presentation" class="nav-item">
+                        @Html.ActionLink("Liste Elèves", "ListEleves", "Home", new { @class = "nav-link" })
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        @Html.ActionLink("Ajouter Elève", "AddEleve", "Home", new { @class = "nav-link" })
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        @Html.ActionLink("Ajouter Absence", "AddAbsence", "Home", new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Projet.NET par Thibault FAGUE</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

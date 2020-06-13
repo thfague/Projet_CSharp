@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Liste des élèves";
+}
+@using WebApplication.Models
+@model List<EleveViewModel>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Liste des élèves</h2>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date de naissance</th>
+            </tr>
+            @foreach (var eleve in Model)
+            {
+                <tr>
+                    <td>@eleve.Nom</td>
+                    <td>@eleve.Prenom</td>
+                    <td>@eleve.DateNaissance</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
