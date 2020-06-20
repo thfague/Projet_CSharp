@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Détail de l'élève";
+}
+@using WebApplication.Models
+@model EleveViewModel
+
+<div class="row">
+    <div class="col-12">
+        <h2>Détail de @Model.Nom</h2>
+        <table>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Date de naissance</th>
+            </tr>
+                <tr>
+                    <td>@Model.Nom</td>
+                    <td>@Model.Prenom</td>
+                    <td>@Model.DateNaissance</td>
+                </tr>
+        </table>
+    </div>
+</div>

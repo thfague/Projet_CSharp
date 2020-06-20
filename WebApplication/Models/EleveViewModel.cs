@@ -8,6 +8,10 @@ namespace WebApplication.Models
     public class EleveViewModel
     {
         /// <summary>
+        /// Identifiant de l'élève
+        /// </summary>
+        public int EleveId { get; set; }
+        /// <summary>
         /// Nom de l'élève
         /// </summary>
         public string Nom { get; set; }
@@ -19,5 +23,9 @@ namespace WebApplication.Models
         /// Date de naissance de l'élève
         /// </summary>
         public DateTime DateNaissance { get; set; }
+        /// <summary>
+        /// Identifiant de la classe dans laquelle se trouve l'élève
+        /// </summary>
+        public int ClasseId { get; set; }
     }
 }

@@ -14,15 +14,16 @@ namespace WebApplication
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Eleve",
+                url: "EleveController/{action}/{id}",
+                defaults: new { action = "ListEleves", id = UrlParameter.Optional }
+            );         
+
+            /* A mettre en dernier */
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
-                name: "ListEleves",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "ListEleves", id = UrlParameter.Optional }
             );
         }
     }

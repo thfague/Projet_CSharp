@@ -5,9 +5,9 @@
 @model List<EleveViewModel>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-12">
         <h2>Liste des élèves</h2>
-        <table>
+        <table style="width: 55%;">
             <tr>
                 <th>Nom</th>
                 <th>Prenom</th>
@@ -19,6 +19,9 @@
                     <td>@eleve.Nom</td>
                     <td>@eleve.Prenom</td>
                     <td>@eleve.DateNaissance</td>
+                    <td>
+                        @Html.ActionLink("Détail", "DetailEleve", "Eleve", new { eleveID = eleve.EleveId })
+                    </td>
                 </tr>
             }
         </table>
