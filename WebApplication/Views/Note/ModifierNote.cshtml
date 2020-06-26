@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Modifier une note";
+}
+@using WebApplication.Models
+@model NoteViewModel
+
+<div class="row">
+    <div class="col-12 my-5">
+        <h2 class="mb-2">Modifier une note</h2>
+        <hr />
+        @using (Html.BeginForm("ModifierNote", "Note"))
+        {
+            @Html.HiddenFor(n => n.EleveId)
+            @Html.HiddenFor(n => n.NoteId)
+
+            <div class="col-12 form-group">
+                @Html.LabelFor(n => n.Valeur)
+                @Html.TextBoxFor(n => n.Valeur, new { @class = "form-control", @type = "number" })
+            </div>
+            <div class="col-12 form-group">
+                @Html.LabelFor(n => n.Matiere)
+                @Html.TextBoxFor(n => n.Matiere, new { @class = "form-control" })
+            </div>
+            <div class="col-12 form-group">
+                @Html.LabelFor(n => n.Appreciation)
+                @Html.TextBoxFor(n => n.Appreciation, new { @class = "form-control" })
+            </div>
+            <div class="col-12 form-group">
+                @Html.LabelFor(n => n.DateNote)
+                @Html.TextBoxFor(n => n.DateNote, new { @class = "form-control", @value = DateTime.Now.Date.ToString("dd/MM/yyyy") })
+            </div>
+
+            <input class="btn btn-primary" role="button" type="submit" value="Enregistrer" />
+        }
+    </div>
+</div>

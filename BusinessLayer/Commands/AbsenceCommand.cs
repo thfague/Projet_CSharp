@@ -37,7 +37,7 @@ namespace BusinessLayer.Commands
         /// <param name="a">Absence à modifier</param>
         public void Modifier(Absence a)
         {
-            Absence upAbs = _contexte.Absences.Where(abs => abs.AbsenceId == a.AbsenceId).FirstOrDefault();
+            Absence upAbs = _contexte.Absences.Where(abs => abs.AbsenceId == a.AbsenceId).SingleOrDefault();
             if (upAbs != null)
             {
                 upAbs.Motif = a.Motif;
@@ -53,7 +53,7 @@ namespace BusinessLayer.Commands
         /// <param name="absenceID">Identifiant de l'absence à supprimer</param>
         public void Supprimer(int absenceID)
         {
-            Absence delAbs = _contexte.Absences.Where(abs => abs.AbsenceId == absenceID).FirstOrDefault();
+            Absence delAbs = _contexte.Absences.Where(abs => abs.AbsenceId == absenceID).SingleOrDefault();
             if (delAbs != null)
             {
                 _contexte.Absences.Remove(delAbs);

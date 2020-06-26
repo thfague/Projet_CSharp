@@ -5,19 +5,73 @@
 @model EleveViewModel
 
 <div class="row">
-    <div class="col-12">
-        <h2>Détail de @Model.Nom</h2>
-        <table>
-            <tr>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Date de naissance</th>
-            </tr>
-                <tr>
-                    <td>@Model.Nom</td>
-                    <td>@Model.Prenom</td>
-                    <td>@Model.DateNaissance</td>
-                </tr>
-        </table>
+    <div class="col-12 my-5">
+        <h2 class="mb-2">@Model.Prenom @Model.Nom (@Model.DateNaissance.ToString("dd/MM/yyyy"))</h2>
+        <h5 class="mb-3 font-italic font-weight-normal">@Model.Classe.NomEtablissement - @Model.Classe.Niveau</h5>
+        <a class="btn btn-primary" role="button" href="@Url.Action("NoteAction", "Note", new { noteID = 0, eleveID = Model.EleveId })">Ajouter une note</a>
+        <a class="btn btn-success" role="button" href="@Url.Action("AbsenceAction", "Absence", new { eleveID = Model.EleveId })">Ajouter une absence</a>
+        <hr />
+        <h2>Notes</h2>
+        @if (Model.Notes.Count() == 0)
+        {
+            <p class="font-italic">Aucunes notes.</p>
+        }
+        else
+        {
+            <table class="row">
+                <tbody class="col-12">
+                    <tr class="row col-12">
+                        <th class="col-2">Valeur</th>
+                        <th class="col-3">Matiere</th>
+                        <th class="col-3">Appréciation</th>
+                        <th class="col-2">Date</th>
+                    </tr>
+                    @foreach (var note in Model.Notes)
+                    {
+                        <tr class="row col-12">
+                            <td class="col-2 align-self-center">@note.Valeur</td>
+                            <td class="col-3 align-self-center">@note.Matiere</td>
+                            <td class="col-3 align-self-center">@note.Appreciation</td>
+                            <td class="col-2 align-self-center">@note.DateNote.ToString("dd/MM/yyyy")</td>
+                            <td class="col-2 align-self-center">
+                                <a class="btn btn-primary" role="button" href="@Url.Action("NoteAction", "Note", new { noteID = note.NoteId, eleveID = Model.EleveId })">Modifier</a>
+                                <button type="button" class="close" aria-label="Close" onclick="location.href='@Url.Action("SupprNote", "Note", new { eleveID = Model.EleveId, noteID = note.NoteId })'" style="color: red; padding-top: 3%;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <hr />
+        <h2>Absences</h2>
+        @if (Model.Absences.Count() == 0)
+        {
+            <p class="font-italic">Aucunes absences.</p>
+        }
+        else
+        {
+            <table class="row">
+                <tbody class="col-12">
+                    <tr class="row col-12">
+                        <th class="col-5">Motif</th>
+                        <th class="col-5">Date</th>
+                    </tr>
+                    @foreach (var absence in Model.Absences)
+                    {
+                        <tr class="row col-12">
+                            <td class="col-5 align-self-center">@absence.Motif</td>
+                            <td class="col-5 align-self-center">@absence.DateAbsence.ToString("dd/MM/yyyy")</td>
+                            <td class="col-2 align-self-center">
+                                <button type="button" class="close" aria-label="Close" onclick="location.href='@Url.Action("SupprAbsence", "Absence", new { eleveID = Model.EleveId, absenceID = absence.AbsenceId })'" style="color: red; padding-top: 3%;">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     </div>
 </div>

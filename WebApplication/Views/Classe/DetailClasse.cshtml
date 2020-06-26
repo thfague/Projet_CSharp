@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Détail de la classe";
+}
+@using WebApplication.Models
+@model ClasseViewModel
+
+<div class="row">
+    <div class="col-12 my-5">
+        <h2 class="mb-2">@Model.NomEtablissement - @Model.Niveau</h2>
+        <hr />
+        <h2>Élèves</h2>
+        <table class="row">
+            <tbody class="col-12">
+                <tr class="row col-12">
+                    <th class="col-3">Nom</th>
+                    <th class="col-3">Prenom</th>
+                    <th class="col-3">Date de naissance</th>
+                </tr>
+                @foreach (var eleve in Model.Eleves)
+                {
+                    <tr class="row col-12">
+                        <td class="col-3 align-self-center">@eleve.Nom</td>
+                        <td class="col-3 align-self-center">@eleve.Prenom</td>
+                        <td class="col-3 align-self-center">@eleve.DateNaissance.ToString("dd/MM/yyyy")</td>
+                        <td class="col-3 align-self-center">
+                            <a class="btn btn-primary" role="button" href="@Url.Action("DetailEleve", "Eleve", new { eleveID = eleve.EleveId })">Détail</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

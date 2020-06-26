@@ -27,5 +27,17 @@ namespace WebApplication.Models
         /// Identifiant de la classe dans laquelle se trouve l'élève
         /// </summary>
         public int ClasseId { get; set; }
+        /// <summary>
+        /// Classe dans laquelle se trouve l'élève
+        /// </summary>
+        public ClasseViewModel Classe { get; set; }
+        /// <summary>
+        /// Liste d'absences de l'élève
+        /// </summary>
+        public ICollection<AbsenceViewModel> Absences { get; set; }
+        /// <summary>
+        /// Liste de notes de l'élève
+        /// </summary>
+        public ICollection<NoteViewModel> Notes { get; set; }
     }
 }

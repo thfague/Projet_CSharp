@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-dark navbar-expand-md bg-secondary">
         <div class="container-fluid">
-            @Html.ActionLink("Projet .NET", "Index", "Home", new { @class = "navbar-brand" })
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">Projet .NET</a>
             <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,10 @@
                  id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li role="presentation" class="nav-item">
-                        @Html.ActionLink("Liste Elèves", "ListEleves", "Eleve", new { @class = "nav-link" })
+                        <a class="nav-link" href="@Url.Action("ListClasses", "Classe", new { filtre = "" })">Liste des classes</a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                        <a class="nav-link" href="@Url.Action("ListEleves", "Eleve", new { filtre = "" })">Liste des élèves</a>
                     </li>
                 </ul>
             </div>

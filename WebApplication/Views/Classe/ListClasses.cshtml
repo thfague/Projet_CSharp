@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Liste des classes";
+}
+@using WebApplication.Models
+@model List<ClasseViewModel>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <h2 class="mb-4">Liste des classes</h2>
+        @using (Html.BeginForm("ListClasses", "Classe"))
+        {
+            <p>
+                @Html.TextBox("filtre")
+                <input type="submit" value="Rechercher" />
+            </p>
+        }
+        <table style="width: 55%;">
+            <tr>
+                <th>Etablissement</th>
+                <th>Niveau</th>
+            </tr>
+            @foreach (var classe in Model)
+            {
+                <tr>
+                    <td>@classe.NomEtablissement</td>
+                    <td>@classe.Niveau</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("DetailClasse", "Classe", new { classeID = classe.ClasseId })">
+                            Détail
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

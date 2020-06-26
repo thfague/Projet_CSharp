@@ -60,6 +60,16 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Récupérer les élèves d'une classe en base par l'ID de la classe
+        /// </summary>
+        /// <returns>List<Eleve></returns>
+        public List<Eleve> GetElevesByClasseId(int classeID)
+        {
+            EleveQuery eq = new EleveQuery(contexte);
+            return eq.GetByClasseID(classeID).ToList();
+        }
+
+        /// <summary>
         /// Ajouter un élève en base
         /// </summary>
         /// <param name="e">Eleve à ajouter</param>

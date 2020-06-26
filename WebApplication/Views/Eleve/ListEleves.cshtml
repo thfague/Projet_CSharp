@@ -4,9 +4,16 @@
 @using WebApplication.Models
 @model List<EleveViewModel>
 
-<div class="row">
+<div class="row mt-5">
     <div class="col-12">
-        <h2>Liste des élèves</h2>
+        <h2 class="mb-4">Liste des élèves</h2>
+        @using (Html.BeginForm("ListEleves", "Eleve"))
+        {
+            <p>
+                @Html.TextBox("filtre")
+                <input type="submit" value="Rechercher" />
+            </p>
+        }
         <table style="width: 55%;">
             <tr>
                 <th>Nom</th>
@@ -18,9 +25,11 @@
                 <tr>
                     <td>@eleve.Nom</td>
                     <td>@eleve.Prenom</td>
-                    <td>@eleve.DateNaissance</td>
+                    <td>@eleve.DateNaissance.ToString("dd/MM/yyyy")</td>
                     <td>
-                        @Html.ActionLink("Détail", "DetailEleve", "Eleve", new { eleveID = eleve.EleveId })
+                        <a class="btn btn-primary" role="button" href="@Url.Action("DetailEleve", "Eleve", new { eleveID = eleve.EleveId })">
+                            Détail
+                        </a>
                     </td>
                 </tr>
             }

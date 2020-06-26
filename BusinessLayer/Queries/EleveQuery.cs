@@ -38,5 +38,15 @@ namespace BusinessLayer.Queries
         {
             return _contexte.Eleves.Where(e => e.EleveId == id);
         }
+
+        /// <summary>
+        /// Récupérer un élève par l'ID de sa classe
+        /// </summary>
+        /// <param name="id">Identifiant de la classe</param>
+        /// <returns>IQueryable de Eleve</returns>
+        public IQueryable<Eleve> GetByClasseID(int id)
+        {
+            return _contexte.Eleves.Where(e => e.ClasseId == id);
+        }
     }
 }

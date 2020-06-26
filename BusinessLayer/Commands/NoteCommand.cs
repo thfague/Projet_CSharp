@@ -37,7 +37,7 @@ namespace BusinessLayer.Commands
         /// <param name="n">Note à modifier</param>
         public void Modifier(Note n)
         {
-            Note upNt = _contexte.Notes.Where(nt => nt.NoteId == n.NoteId).FirstOrDefault();
+            Note upNt = _contexte.Notes.Where(nt => nt.NoteId == n.NoteId).SingleOrDefault();
             if (upNt != null)
             {
                 upNt.Appreciation = n.Appreciation;
