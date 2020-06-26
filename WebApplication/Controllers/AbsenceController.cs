@@ -18,7 +18,7 @@ namespace WebApplication.Controllers
 
         public ActionResult AbsenceAction(int eleveID)
         {
-            AbsenceViewModel absenceVM = new AbsenceViewModel { EleveId = eleveID };
+            AbsenceViewModel absenceVM = new AbsenceViewModel { EleveId = eleveID, DateAbsence = DateTime.Now.Date };
             return View("AjoutAbsence", absenceVM);
         }
 
