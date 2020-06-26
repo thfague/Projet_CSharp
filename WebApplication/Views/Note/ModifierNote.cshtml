@@ -27,7 +27,7 @@
             </div>
             <div class="col-12 form-group">
                 @Html.LabelFor(n => n.DateNote)
-                @Html.TextBoxFor(n => n.DateNote, new { @class = "form-control", @value = DateTime.Now.Date.ToString("dd/MM/yyyy") })
+                @Html.TextBoxFor(n => n.DateNote, new { @class = "form-control" })
             </div>
 
             <input class="btn btn-primary" role="button" type="submit" value="Enregistrer" />

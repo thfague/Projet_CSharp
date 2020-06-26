@@ -16,10 +16,19 @@ namespace WebApplication.Controllers
             return View();
         }
 
-        public ActionResult AbsenceAction(int eleveID)
+        public ActionResult AbsenceAction(int absenceID, int eleveID)
         {
-            AbsenceViewModel absenceVM = new AbsenceViewModel { EleveId = eleveID, DateAbsence = DateTime.Now.Date };
-            return View("AjoutAbsence", absenceVM);
+            if (absenceID == 0)
+            {
+                AbsenceViewModel absenceVM = new AbsenceViewModel { EleveId = eleveID, DateAbsence = DateTime.Now.Date };
+                return View("AjoutAbsence", absenceVM);
+            }
+            else
+            {
+                Absence a = BusinessManager.Instance.GetAbsenceById(absenceID);
+                AbsenceViewModel absenceVM = new AbsenceViewModel { Motif = a.Motif, DateAbsence = a.DateAbsence, EleveId = a.EleveId, AbsenceId = a.AbsenceId };
+                return View("ModifierAbsence", absenceVM);
+            }
         }
 
         public ActionResult AjoutAbsence(AbsenceViewModel absenceVM)
@@ -33,6 +42,24 @@ namespace WebApplication.Controllers
             Absence absence;
             absence = new Absence { EleveId = absenceVM.EleveId, Motif = absenceVM.Motif, DateAbsence = absenceVM.DateAbsence };
             BusinessManager.Instance.AjouterAbsence(absence);
+
+            Eleve e = BusinessManager.Instance.GetEleveById(absenceVM.EleveId);
+            EleveViewModel eleveViewModel = new EleveViewModel { Nom = e.Nom, Prenom = e.Prenom, DateNaissance = e.DateNaissance };
+
+            return RedirectToAction("DetailEleve", "Eleve", new { usePartial = false, eleveID = absenceVM.EleveId });
+        }
+
+        public ActionResult ModifierAbsence(AbsenceViewModel absenceVM)
+        {
+            ViewBag.Message = "Modification d'une absence.";
+            if (!ModelState.IsValid)
+            {
+                return View("ModifierAbsence", absenceVM);
+            }
+
+            Absence absence;
+            absence = new Absence { Motif = absenceVM.Motif, DateAbsence = absenceVM.DateAbsence, EleveId = absenceVM.EleveId, AbsenceId = absenceVM.AbsenceId };
+            BusinessManager.Instance.ModifierAbsence(absence);
 
             Eleve e = BusinessManager.Instance.GetEleveById(absenceVM.EleveId);
             EleveViewModel eleveViewModel = new EleveViewModel { Nom = e.Nom, Prenom = e.Prenom, DateNaissance = e.DateNaissance };

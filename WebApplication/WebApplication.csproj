@@ -330,6 +330,7 @@
     <Content Include="Views\Absence\AjoutAbsence.cshtml" />
     <Content Include="Views\Classe\ListClasses.cshtml" />
     <Content Include="Views\Classe\DetailClasse.cshtml" />
+    <Content Include="Views\Absence\ModifierAbsence.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

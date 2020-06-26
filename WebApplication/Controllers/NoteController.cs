@@ -48,7 +48,7 @@ namespace WebApplication.Controllers
 
         public ActionResult ModifierNote(NoteViewModel noteVM)
         {
-            ViewBag.Message = "Ajout d'une note.";
+            ViewBag.Message = "Modification d'une note.";
             if (!ModelState.IsValid)
             {
                 return View("ModifierNote", noteVM);

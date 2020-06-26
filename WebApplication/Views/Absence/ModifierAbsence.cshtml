@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Modifier une absence";
+}
+@using WebApplication.Models
+@model AbsenceViewModel
+
+<div class="row">
+    <div class="col-12 my-5">
+        <h2 class="mb-2">Modifier une absence</h2>
+        <hr />
+        @using (Html.BeginForm("ModifierAbsence", "Absence"))
+        {
+            @Html.HiddenFor(a => a.EleveId)
+            @Html.HiddenFor(a => a.AbsenceId)
+
+            <div class="col-12 form-group">
+                @Html.LabelFor(a => a.Motif)
+                @Html.TextBoxFor(a => a.Motif, new { @class = "form-control" })
+            </div>
+            <div class="col-12 form-group">
+                @Html.LabelFor(a => a.DateAbsence)
+                @Html.TextBoxFor(a => a.DateAbsence, new { @class = "form-control" })
+            </div>
+
+            <input class="btn btn-primary" role="button" type="submit" value="Enregistrer" />
+        }
+    </div>
+</div>
